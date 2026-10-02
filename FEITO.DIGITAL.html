@@ -7,6 +7,54 @@
     <title>FEITO.DIGITAL: o seu negócio encontrado no Google e a vender pelo WhatsApp</title>
     <meta name="description"
         content="Presença digital e consultoria para pequenos negócios em Moçambique. Diagnóstico grátis de 20 minutos.">
+    <meta property="og:title" content="FEITO.DIGITAL: o seu negócio encontrado no Google e a vender pelo WhatsApp">
+    <meta property="og:description"
+        content="Presença digital e consultoria para pequenos negócios em Moçambique. Diagnóstico grátis de 20 minutos.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_MZ">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FEITO.DIGITAL: Presença Digital em Moçambique">
+    <meta name="twitter:description"
+        content="Colocamos o seu negócio no Google e organizamos os pedidos pelo WhatsApp. Diagnóstico grátis.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "FEITO.DIGITAL",
+      "description": "Presença digital e consultoria para pequenos negócios em Moçambique. Google Business, catálogo WhatsApp e organização de pedidos.",
+      "telephone": "+258877888964",
+      "priceRange": "2500 - 20000 MZN",
+      "currenciesAccepted": "MZN",
+      "paymentAccepted": "M-Pesa, e-Mola, Millennium BIM",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Maputo",
+        "addressCountry": "MZ"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Dércio Langa"
+      }
+    }
+    </script>
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0E7A52">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FEITO.DIG">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
     <style>
@@ -110,6 +158,60 @@
             color: var(--ink);
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            cursor: pointer;
+            transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+            flex-shrink: 0;
+            padding: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--brand);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.94);
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        .theme-toggle .moon-icon {
+            display: block;
+        }
+
+        :root[data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        :root[data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .theme-toggle .sun-icon {
+                display: block;
+            }
+            :root:not([data-theme="light"]) .theme-toggle .moon-icon {
+                display: none;
+            }
+        }
+
         .logo {
             font-weight: 800;
             font-size: 1.15rem;
@@ -207,6 +309,11 @@
             header {
                 padding: .85rem 0;
                 gap: .6rem;
+            }
+
+            .theme-toggle {
+                width: 38px;
+                height: 38px;
             }
 
             header .btn {
@@ -504,12 +611,25 @@
             margin-top: 1.4rem
         }
 
+        .proj a,
         .proj span {
             border: 1px solid var(--line);
             background: var(--surface);
             padding: .6rem 1rem;
             border-radius: 12px;
-            font-weight: 600
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            transition: border-color .15s ease, color .15s ease, transform .15s ease;
+        }
+
+        .proj a:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            transform: translateY(-1px);
         }
 
         .cta {
@@ -630,6 +750,114 @@
             line-height: 1.3;
         }
 
+        .faq-list {
+            margin-top: 2rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--line);
+            padding: 1.2rem 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            list-style: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            user-select: none;
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            color: var(--muted);
+            transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), color .15s ease;
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(180deg);
+            color: var(--brand);
+        }
+
+        .faq-answer {
+            padding-top: .75rem;
+            padding-bottom: .25rem;
+        }
+
+        .faq-answer p {
+            color: var(--muted);
+            font-size: .98rem;
+            line-height: 1.6;
+            max-width: 65ch;
+            margin: 0;
+        }
+
+        .faq-answer strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .testi-avatar-wrap picture {
+            display: block;
+            width: 48px;
+            height: 48px;
+        }
+
+        .offline-toast {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: #12241D;
+            color: #E8F1ED;
+            border: 1px solid var(--brand);
+            padding: .6rem 1.1rem;
+            border-radius: 999px;
+            font-size: .84rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            animation: slideUp .2s ease-out;
+            pointer-events: none;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        .offline-toast[hidden] {
+            display: none !important;
+        }
+
+        .offline-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FFC93C;
+            animation: pulse 1.5s infinite ease-in-out;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .4; transform: scale(0.8); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translate(-50%, 10px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
         footer {
             padding: 2rem 0 3rem;
             color: var(--muted);
@@ -673,14 +901,21 @@
                 <a href="#servicos">Serviços</a>
                 <a href="#como-funciona">Como funciona</a>
                 <a href="#testemunhos">Resultados</a>
+                <a href="#faq">Dúvidas</a>
             </nav>
-            <a class="btn" data-wa href="#" aria-label="Falar no WhatsApp">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M20.52 3.48A11.9 11.9 0 0 0 12.06 0C5.46 0 .09 5.37.09 11.97c0 2.11.55 4.16 1.6 5.97L0 24l6.23-1.63a11.95 11.95 0 0 0 5.83 1.51h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-1.25-6.21-3.52-8.43zM12.06 21.84h-.01c-1.8 0-3.57-.48-5.11-1.4l-.37-.22-3.79.99 1.01-3.69-.24-.38a9.92 9.92 0 0 1-1.52-5.17c0-5.5 4.48-9.98 9.98-9.98 2.67 0 5.17 1.04 7.05 2.92a9.92 9.92 0 0 1 2.92 7.05c0 5.5-4.47 9.98-9.92 9.98zm5.47-7.48c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.24-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.11 3.23 5.12 4.53.72.31 1.28.5 1.71.64.72.23 1.37.2 1.89.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.31.18-1.43-.08-.13-.28-.2-.58-.35z"/>
-                </svg>
-                <span class="btn-text-full">Falar no WhatsApp</span>
-                <span class="btn-text-short">WhatsApp</span>
-            </a>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+                    <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+                <a class="btn" data-wa href="#" aria-label="Falar no WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M20.52 3.48A11.9 11.9 0 0 0 12.06 0C5.46 0 .09 5.37.09 11.97c0 2.11.55 4.16 1.6 5.97L0 24l6.23-1.63a11.95 11.95 0 0 0 5.83 1.51h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-1.25-6.21-3.52-8.43zM12.06 21.84h-.01c-1.8 0-3.57-.48-5.11-1.4l-.37-.22-3.79.99 1.01-3.69-.24-.38a9.92 9.92 0 0 1-1.52-5.17c0-5.5 4.48-9.98 9.98-9.98 2.67 0 5.17 1.04 7.05 2.92a9.92 9.92 0 0 1 2.92 7.05c0 5.5-4.47 9.98-9.92 9.98zm5.47-7.48c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.24-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.11 3.23 5.12 4.53.72.31 1.28.5 1.71.64.72.23 1.37.2 1.89.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.31.18-1.43-.08-.13-.28-.2-.58-.35z"/>
+                    </svg>
+                    <span class="btn-text-full">Falar no WhatsApp</span>
+                    <span class="btn-text-short">WhatsApp</span>
+                </a>
+            </div>
         </header>
 
         <main>
@@ -741,6 +976,7 @@
                             <li><span>Completo: domínio próprio, redes ligadas e 3 meses de ajustes</span><span>desde
                                     20.000 MZN</span></li>
                         </ul>
+                        <a class="btn ghost" style="margin-top: 1.2rem; width: 100%; text-align: center;" data-wa data-wa-msg="Olá! Gostaria de falar sobre o serviço de Presença Digital (Google e WhatsApp) da FEITO.DIGITAL para o meu negócio." href="#">Pedir proposta de Presença Digital</a>
                     </div>
                     <div class="offer">
                         <h3>Consultoria digital</h3>
@@ -751,6 +987,7 @@
                                     formação</span><span>5.000–10.000 MZN</span></li>
                             <li><span>Acompanhamento mensal</span><span>1.500–3.000 MZN</span></li>
                         </ul>
+                        <a class="btn ghost" style="margin-top: 1.2rem; width: 100%; text-align: center;" data-wa data-wa-msg="Olá! Gostaria de agendar o Diagnóstico Grátis de 20 minutos de Consultoria Digital da FEITO.DIGITAL." href="#">Agendar diagnóstico grátis</a>
                     </div>
                 </div>
                 <p class="note">Preços indicativos. O valor final é confirmado na proposta, depois do diagnóstico.</p>
@@ -774,7 +1011,7 @@
                     <li>
                         <div>
                             <h3>Entrega em 7 dias</h3>
-                            <p>Começamos com um sinal de 50%, por M-Pesa, e-Mola ou transferência.</p>
+                            <p>Começamos com um sinal de 50%, por M-Pesa, e-Mola ou transferência bancária (apenas BIM).</p>
                         </div>
                     </li>
                     <li>
@@ -801,7 +1038,10 @@
                         </div>
                         <div class="testi-author">
                             <div class="testi-avatar-wrap">
-                                <img class="testi-avatar" src="/src/assets/images/avatar_rita_macuacua_1790952973186.jpg" alt="Foto de Rita Macuácua" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                                <picture>
+                                    <source type="image/webp" srcset="/src/assets/images/avatar_rita_thumb.webp">
+                                    <img class="testi-avatar" src="/src/assets/images/avatar_rita_thumb.jpg" alt="Foto de Rita Macuácua" width="48" height="48" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.testi-avatar-wrap').querySelector('.testi-fallback').style.display='grid'; this.style.display='none';" />
+                                </picture>
                                 <div class="testi-fallback" aria-hidden="true">R</div>
                             </div>
                             <div class="testi-author-info">
@@ -822,7 +1062,10 @@
                         </div>
                         <div class="testi-author">
                             <div class="testi-avatar-wrap">
-                                <img class="testi-avatar" src="/src/assets/images/avatar_arnaldo_sitoe_1790952984603.jpg" alt="Foto de Arnaldo Sitoe" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                                <picture>
+                                    <source type="image/webp" srcset="/src/assets/images/avatar_arnaldo_thumb.webp">
+                                    <img class="testi-avatar" src="/src/assets/images/avatar_arnaldo_thumb.jpg" alt="Foto de Arnaldo Sitoe" width="48" height="48" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.testi-avatar-wrap').querySelector('.testi-fallback').style.display='grid'; this.style.display='none';" />
+                                </picture>
                                 <div class="testi-fallback" aria-hidden="true">A</div>
                             </div>
                             <div class="testi-author-info">
@@ -843,7 +1086,10 @@
                         </div>
                         <div class="testi-author">
                             <div class="testi-avatar-wrap">
-                                <img class="testi-avatar" src="/src/assets/images/avatar_cremilda_tembe_1790952997688.jpg" alt="Foto de Cremilda Tembe" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                                <picture>
+                                    <source type="image/webp" srcset="/src/assets/images/avatar_cremilda_thumb.webp">
+                                    <img class="testi-avatar" src="/src/assets/images/avatar_cremilda_thumb.jpg" alt="Foto de Cremilda Tembe" width="48" height="48" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.closest('.testi-avatar-wrap').querySelector('.testi-fallback').style.display='grid'; this.style.display='none';" />
+                                </picture>
                                 <div class="testi-fallback" aria-hidden="true">C</div>
                             </div>
                             <div class="testi-author-info">
@@ -859,12 +1105,72 @@
                 <h2>Feito por quem constrói</h2>
                 <p class="sub">A FEITO.DIGITAL é liderada por Dércio Langa, finalista de Engenharia Informática no ISPT,
                     com cerca de 2 anos de experiência em desenvolvimento web, sistemas e design.</p>
-                <div class="proj"><span>estoquelafe.ai.studo</span><span>translitelda.com</span></div>
+                <div class="proj">
+                    <a href="https://translitelda.com" target="_blank" rel="noopener">translitelda.com ↗</a>
+                    <a href="https://estoquelafe.ai.studo" target="_blank" rel="noopener">estoquelafe.ai.studo ↗</a>
+                </div>
             </section>
 
             <section class="cta">
                 <h2>Quer saber o que o seu negócio está a perder?</h2>
                 <a class="btn" data-wa href="#">Pedir diagnóstico grátis</a>
+            </section>
+
+            <section id="faq">
+                <h2>Perguntas frequentes</h2>
+                <p class="sub">Respostas simples para as dúvidas mais comuns sobre prazos, formas de pagamento e como trabalhamos.</p>
+                <div class="faq-list">
+                    <details class="faq-item" open>
+                        <summary class="faq-question">
+                            <span>Quanto tempo demora a entrega do serviço?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>O prazo padrão de entrega é de <strong>7 dias úteis</strong>. Após o diagnóstico inicial de 20 minutos e a aprovação da proposta, iniciamos logo a configuração da sua presença no Google e a estruturação do catálogo no WhatsApp.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Quais são as formas de pagamento aceites?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Aceitamos pagamentos práticos por <strong>M-Pesa</strong> e <strong>e-Mola</strong>. Para transferências bancárias, aceitamos <strong>exclusivamente pelo BIM (Millennium BIM)</strong>. Emitimos comprovativo para cada transacção.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Preciso de pagar o valor todo adiantado?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Não. Começamos sempre com um <strong>sinal de 50%</strong> para arrancar a execução. Os restantes <strong>50% só são pagos na entrega</strong>, depois de ver o serviço pronto e a funcionar.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>O que preciso fornecer para começarmos?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Apenas as informações do seu negócio: nome, endereço ou zona de entrega, contactos, horário e a lista ou fotos dos produtos/serviços com preços. Toda a configuração técnica e visual é feita pela FEITO.DIGITAL.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Tenho apoio ou ajustes após a entrega?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Sim. Todos os pacotes incluem <strong>acompanhamento nas primeiras semanas</strong> para pequenos ajustes e dúvidas. Para suporte contínuo e gestão dos pedidos, dispomos também de acompanhamento mensal a partir de 1.500 MZN.</p>
+                        </div>
+                    </details>
+                </div>
+                <p class="note" style="margin-top: 1.5rem;">Tem outra dúvida que não encontrou aqui? <a data-wa href="#" style="color: var(--brand); font-weight: 600; text-decoration: underline;">Fale directamente no WhatsApp</a>.</p>
             </section>
         </main>
 
@@ -877,10 +1183,51 @@
         <span>Falar no WhatsApp</span>
     </a>
     <script>
-        // Troque pelo seu número, com indicativo e sem espaços (ex.: 258841234567)
+        // Configuração de WhatsApp com mensagens personalizadas
         var WA_NUMBER = "258877888964";
-        var msg = encodeURIComponent("Olá! Vim pelo site da FEITO.DIGITAL e gostaria de um diagnóstico grátis para o meu negócio.");
-        document.querySelectorAll("[data-wa]").forEach(function (a) { a.href = "https://wa.me/" + WA_NUMBER + "?text=" + msg; a.target = "_blank"; a.rel = "noopener" });
+        var defaultMsg = "Olá! Vim pelo site da FEITO.DIGITAL e gostaria de um diagnóstico grátis para o meu negócio.";
+        document.querySelectorAll("[data-wa]").forEach(function (a) {
+            var customMsg = a.getAttribute("data-wa-msg") || defaultMsg;
+            a.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(customMsg);
+            a.target = "_blank";
+            a.rel = "noopener";
+        });
+
+        // Alternador de Tema Claro / Escuro
+        var themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", function () {
+                var currentTheme = document.documentElement.getAttribute("data-theme");
+                var isDark = currentTheme === "dark" || (!currentTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                var nextTheme = isDark ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", nextTheme);
+                localStorage.setItem("theme", nextTheme);
+            });
+        }
+
+        // Registo de Service Worker para carregamento ultrarrápido e navegação offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').then(function (reg) {
+                    reg.update();
+                }).catch(function () {});
+            });
+        }
+
+        // Monitor de conectividade (Online / Offline)
+        var offlineToast = document.getElementById("offline-toast");
+        function updateOnlineStatus() {
+            if (offlineToast) {
+                if (!navigator.onLine) {
+                    offlineToast.removeAttribute("hidden");
+                } else {
+                    offlineToast.setAttribute("hidden", "true");
+                }
+            }
+        }
+        window.addEventListener("online", updateOnlineStatus);
+        window.addEventListener("offline", updateOnlineStatus);
+        if (!navigator.onLine) updateOnlineStatus();
     </script>
 </body>
 

@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "FEITO.DIGITAL: Presença Digital Moçambique",
+  "short_name": "FEITO.DIG",
+  "description": "Presença digital e consultoria para pequenos negócios em Moçambique. Google Business, catálogo WhatsApp e organização de pedidos.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#EEF4F0",
+  "theme_color": "#0E7A52",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
