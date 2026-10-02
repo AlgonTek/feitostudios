@@ -1,0 +1,8 @@
+{
+  "name": "FEITO.DIGITAL",
+  "description": "Presença digital e consultoria para pequenos negócios em Moçambique. Diagnóstico grátis de 20 minutos.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
