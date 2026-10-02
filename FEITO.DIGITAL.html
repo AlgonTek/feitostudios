@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>FEITO.DIGITAL: o seu negócio encontrado no Google e a vender pelo WhatsApp</title>
+    <meta name="description"
+        content="Presença digital e consultoria para pequenos negócios em Moçambique. Diagnóstico grátis de 20 minutos.">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
+    <style>
+        :root {
+            --bg: #EEF4F0;
+            --surface: #fff;
+            --ink: #0C1F1A;
+            --muted: #4A6159;
+            --brand: #0E7A52;
+            --on-brand: #fff;
+            --hi: #FFC93C;
+            --line: #CFDDD5;
+            --bubble-in: #fff;
+            --bubble-out: #D4F5E2;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0A1512;
+                --surface: #12241D;
+                --ink: #E8F1ED;
+                --muted: #9DB5AB;
+                --brand: #3DDC97;
+                --on-brand: #06261A;
+                --line: #244036;
+                --bubble-in: #1A332A;
+                --bubble-out: #14503A
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0A1512;
+            --surface: #12241D;
+            --ink: #E8F1ED;
+            --muted: #9DB5AB;
+            --brand: #3DDC97;
+            --on-brand: #06261A;
+            --line: #244036;
+            --bubble-in: #1A332A;
+            --bubble-out: #14503A
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 400 1.0625rem/1.6 "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif
+        }
+
+        a {
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--brand);
+            outline-offset: 3px
+        }
+
+        .wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 1.25rem
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -.01em;
+            text-decoration: none
+        }
+
+        .logo span {
+            background: var(--hi);
+            color: #0C1F1A;
+            padding: 0 .35rem;
+            border-radius: 4px;
+            margin-left: .1rem
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--brand);
+            color: var(--on-brand);
+            font-weight: 600;
+            padding: .8rem 1.4rem;
+            border-radius: 999px;
+            text-decoration: none
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--ink);
+            border: 2px solid var(--ink)
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.12;
+            letter-spacing: -.02em;
+            margin: 0
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 800;
+            max-width: 15ch
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 4vw, 2.3rem);
+            font-weight: 800;
+            max-width: 22ch
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600
+        }
+
+        p {
+            margin: 0
+        }
+
+        .hero {
+            display: grid;
+            gap: 2.5rem;
+            padding: 2rem 0 4rem;
+            align-items: center
+        }
+
+        .hero p.lead {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 44ch;
+            margin: 1.2rem 0 1.8rem
+        }
+
+        .actions {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap
+        }
+
+        .chat {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 1rem;
+            max-width: 380px;
+            width: 100%;
+            justify-self: center
+        }
+
+        .chat-top {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding-bottom: .8rem;
+            border-bottom: 1px solid var(--line);
+            font-weight: 600;
+            font-size: .95rem
+        }
+
+        .dot {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--hi);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            color: #0C1F1A
+        }
+
+        .msgs {
+            display: flex;
+            flex-direction: column;
+            gap: .55rem;
+            padding-top: .9rem
+        }
+
+        .m {
+            max-width: 85%;
+            padding: .55rem .8rem;
+            border-radius: 14px;
+            font-size: .95rem;
+            line-height: 1.4;
+            opacity: 0;
+            animation: in .4s forwards
+        }
+
+        .m.c {
+            background: var(--bubble-in);
+            border: 1px solid var(--line);
+            align-self: flex-start;
+            border-top-left-radius: 4px
+        }
+
+        .m.n {
+            background: var(--bubble-out);
+            align-self: flex-end;
+            border-top-right-radius: 4px
+        }
+
+        .m:nth-child(1) {
+            animation-delay: .3s
+        }
+
+        .m:nth-child(2) {
+            animation-delay: 1.3s
+        }
+
+        .m:nth-child(3) {
+            animation-delay: 2.4s
+        }
+
+        .m:nth-child(4) {
+            animation-delay: 3.4s
+        }
+
+        .m:nth-child(5) {
+            animation-delay: 4.5s
+        }
+
+        .m small {
+            display: block;
+            color: var(--muted);
+            margin-top: .15rem
+        }
+
+        @keyframes in {
+            from {
+                opacity: 0;
+                transform: translateY(6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .m {
+                animation: none;
+                opacity: 1
+            }
+        }
+
+        section {
+            padding: 3.5rem 0;
+            border-top: 1px solid var(--line)
+        }
+
+        section>.wrap>p.sub {
+            color: var(--muted);
+            margin-top: .8rem;
+            max-width: 52ch
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.2rem;
+            margin-top: 2rem
+        }
+
+        .pain {
+            padding-left: 1rem;
+            border-left: 4px solid var(--hi)
+        }
+
+        .pain p {
+            color: var(--muted);
+            margin-top: .3rem
+        }
+
+        .offer {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 1.6rem
+        }
+
+        .offer p {
+            color: var(--muted);
+            margin: .5rem 0 1.1rem
+        }
+
+        .offer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .offer li {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: .65rem 0;
+            border-top: 1px solid var(--line)
+        }
+
+        .offer li span:last-child {
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .note {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-top: 1rem
+        }
+
+        ol.steps {
+            list-style: none;
+            counter-reset: s;
+            margin: 2rem 0 0;
+            padding: 0;
+            display: grid;
+            gap: 1.2rem
+        }
+
+        ol.steps li {
+            counter-increment: s;
+            display: grid;
+            grid-template-columns: 2.4rem 1fr;
+            gap: .9rem
+        }
+
+        ol.steps li::before {
+            content: counter(s);
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            background: var(--brand);
+            color: var(--on-brand);
+            display: grid;
+            place-items: center;
+            font-weight: 800
+        }
+
+        ol.steps p {
+            color: var(--muted)
+        }
+
+        .proj {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap;
+            margin-top: 1.4rem
+        }
+
+        .proj span {
+            border: 1px solid var(--line);
+            background: var(--surface);
+            padding: .6rem 1rem;
+            border-radius: 12px;
+            font-weight: 600
+        }
+
+        .cta {
+            text-align: left
+        }
+
+        .cta h2 {
+            max-width: 20ch;
+            margin-bottom: 1.4rem
+        }
+
+        footer {
+            padding: 2rem 0 3rem;
+            color: var(--muted);
+            font-size: .9rem;
+            border-top: 1px solid var(--line)
+        }
+
+        @media (min-width:760px) {
+            .hero {
+                grid-template-columns: 1.2fr 1fr
+            }
+
+            .grid.three {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .grid.two {
+                grid-template-columns: 1fr 1fr
+            }
+
+            ol.steps {
+                grid-template-columns: repeat(4, 1fr)
+            }
+
+            ol.steps li {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <a class="logo" href="#">FEITO<span>.DIGITAL</span></a>
+            <a class="btn" data-wa href="#">Falar no WhatsApp</a>
+        </header>
+
+        <main>
+            <div class="hero">
+                <div>
+                    <h1>Quando um cliente pergunta, o seu negócio responde.</h1>
+                    <p class="lead">Colocamos o seu negócio no Google e organizamos os pedidos pelo WhatsApp, para que
+                        nenhuma venda se perca. Em 7 dias.</p>
+                    <div class="actions">
+                        <a class="btn" data-wa href="#">Pedir diagnóstico grátis</a>
+                        <a class="btn ghost" href="#servicos">Ver serviços</a>
+                    </div>
+                </div>
+                <div class="chat" role="img" aria-label="Exemplo de conversa de WhatsApp entre um cliente e um negócio">
+                    <div class="chat-top">
+                        <div class="dot">B</div>Pastelaria da Rita
+                    </div>
+                    <div class="msgs">
+                        <div class="m c">Boa tarde, entregam bolos hoje?</div>
+                        <div class="m n">Boa tarde! Sim, entregamos até às 18h. Aqui está o catálogo com preços.</div>
+                        <div class="m c">Quero o de chocolate. Posso pagar por M-Pesa?</div>
+                        <div class="m n">Pode. Pedido registado. Entrega às 16h30.<small>Resposta em menos de 1
+                                minuto</small></div>
+                        <div class="m c">Perfeito, obrigada!</div>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <h2>O que faz um pequeno negócio perder clientes</h2>
+                <div class="grid three">
+                    <div class="pain">
+                        <h3>Ninguém o encontra</h3>
+                        <p>Quem pesquisa no Google ou no Maps não vê o negócio, nem o contacto, nem o horário.</p>
+                    </div>
+                    <div class="pain">
+                        <h3>As mensagens ficam sem resposta</h3>
+                        <p>O cliente pergunta, ninguém responde a tempo e ele compra noutro lado.</p>
+                    </div>
+                    <div class="pain">
+                        <h3>Ninguém sabe o que foi vendido</h3>
+                        <p>Pedidos perdidos em conversas e sem registo. No fim do mês, as contas não batem.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="servicos">
+                <h2>Dois serviços, um objetivo: vender sem perder pedidos</h2>
+                <div class="grid two">
+                    <div class="offer">
+                        <h3>Presença digital</h3>
+                        <p>Para ser encontrado e contactado com um clique.</p>
+                        <ul>
+                            <li><span>Visível: Google Business, WhatsApp Business com catálogo e página
+                                    única</span><span>desde 2.500 MZN</span></li>
+                            <li><span>Catálogo: site com produtos, botão de pedido e identidade visual
+                                    básica</span><span>desde 10.000 MZN</span></li>
+                            <li><span>Completo: domínio próprio, redes ligadas e 3 meses de ajustes</span><span>desde
+                                    20.000 MZN</span></li>
+                        </ul>
+                    </div>
+                    <div class="offer">
+                        <h3>Consultoria digital</h3>
+                        <p>Para responder mais depressa e saber o que se vende.</p>
+                        <ul>
+                            <li><span>Diagnóstico de 20 minutos</span><span>grátis</span></li>
+                            <li><span>Implementação: WhatsApp organizado, controlo de pedidos e
+                                    formação</span><span>5.000–10.000 MZN</span></li>
+                            <li><span>Acompanhamento mensal</span><span>1.500–3.000 MZN</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="note">Preços indicativos. O valor final é confirmado na proposta, depois do diagnóstico.</p>
+            </section>
+
+            <section>
+                <h2>Como trabalhamos</h2>
+                <ol class="steps">
+                    <li>
+                        <div>
+                            <h3>Diagnóstico grátis</h3>
+                            <p>20 minutos para ver como o negócio recebe clientes hoje.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h3>Proposta no mesmo dia</h3>
+                            <p>Diz o que muda, quanto custa e em quanto tempo.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h3>Entrega em 7 dias</h3>
+                            <p>Começamos com um sinal de 50%, por M-Pesa, e-Mola ou transferência.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h3>Acompanhamento</h3>
+                            <p>Ajustamos o que for preciso nas primeiras semanas.</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Feito por quem constrói</h2>
+                <p class="sub">A FEITO.DIGITAL é liderada por Dércio Langa, finalista de Engenharia Informática no ISPT,
+                    com cerca de 2 anos de experiência em desenvolvimento web, sistemas e design.</p>
+                <div class="proj"><span>estoquelafe.ai.studo</span><span>translitelda.com</span></div>
+            </section>
+
+            <section class="cta">
+                <h2>Quer saber o que o seu negócio está a perder?</h2>
+                <a class="btn" data-wa href="#">Pedir diagnóstico grátis</a>
+            </section>
+        </main>
+
+        <footer>FEITO.DIGITAL · Presença digital e consultoria para pequenos negócios em Moçambique</footer>
+    </div>
+    <script>
+        // Troque pelo seu número, com indicativo e sem espaços (ex.: 258841234567)
+        var WA_NUMBER = "258877888964";
+        var msg = encodeURIComponent("Olá! Vim pelo site da FEITO.DIGITAL e gostaria de um diagnóstico grátis para o meu negócio.");
+        document.querySelectorAll("[data-wa]").forEach(function (a) { a.href = "https://wa.me/" + WA_NUMBER + "?text=" + msg; a.target = "_blank"; a.rel = "noopener" });
+    </script>
+</body>
+
+</html>
