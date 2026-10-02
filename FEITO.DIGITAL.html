@@ -53,7 +53,8 @@
         }
 
         html {
-            scroll-padding-top: env(safe-area-inset-top, 0px)
+            scroll-behavior: smooth;
+            scroll-padding-top: 1.5rem
         }
 
         *,
@@ -89,6 +90,24 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.25rem 0
+        }
+
+        .nav {
+            display: none;
+            gap: 1.6rem;
+            align-items: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--muted);
+            transition: color .15s ease;
+        }
+
+        .nav a:hover {
+            color: var(--ink);
         }
 
         .logo {
@@ -397,6 +416,115 @@
             margin-bottom: 1.4rem
         }
 
+        .testi-grid {
+            display: grid;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .testi-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.2rem;
+        }
+
+        .testi-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .testi-quote {
+            font-size: .98rem;
+            line-height: 1.6;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .testi-metric {
+            padding-top: .8rem;
+            border-top: 1px solid var(--line);
+            font-size: .85rem;
+            color: var(--brand);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        .testi-metric .sep {
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .testi-metric .tag {
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            padding-top: .4rem;
+        }
+
+        .testi-avatar-wrap {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .testi-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--line);
+            background: var(--hi);
+            display: block;
+        }
+
+        .testi-fallback {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--hi);
+            display: none;
+            place-items: center;
+            font-weight: 800;
+            color: #0C1F1A;
+            font-size: 1rem;
+        }
+
+        .testi-author-info {
+            display: flex;
+            flex-direction: column;
+            gap: .15rem;
+        }
+
+        .testi-name {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .testi-role {
+            font-size: .82rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.3;
+        }
+
         footer {
             padding: 2rem 0 3rem;
             color: var(--muted);
@@ -417,6 +545,10 @@
                 grid-template-columns: 1fr 1fr
             }
 
+            .testi-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             ol.steps {
                 grid-template-columns: repeat(4, 1fr)
             }
@@ -432,6 +564,11 @@
     <div class="wrap">
         <header>
             <a class="logo" href="#">FEITO<span>.DIGITAL</span></a>
+            <nav class="nav">
+                <a href="#servicos">Serviços</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#testemunhos">Resultados</a>
+            </nav>
             <a class="btn" data-wa href="#">Falar no WhatsApp</a>
         </header>
 
@@ -508,7 +645,7 @@
                 <p class="note">Preços indicativos. O valor final é confirmado na proposta, depois do diagnóstico.</p>
             </section>
 
-            <section>
+            <section id="como-funciona">
                 <h2>Como trabalhamos</h2>
                 <ol class="steps">
                     <li>
@@ -536,6 +673,75 @@
                         </div>
                     </li>
                 </ol>
+            </section>
+
+            <section id="testemunhos">
+                <h2>Resultados de quem já organizou as vendas</h2>
+                <p class="sub">Pequenos negócios em Moçambique que deixaram de perder pedidos e hoje vendem de forma rápida e controlada.</p>
+                <div class="testi-grid">
+                    <div class="testi-card">
+                        <div class="testi-body">
+                            <p class="testi-quote">“Antes perdíamos vendas porque os pedidos ficavam espalhados no WhatsApp pessoal. Em menos de uma semana a FEITO.DIGITAL criou o nosso catálogo e organizou os pagamentos por M-Pesa. Fechámos 24 encomendas de bolos na primeira semana sem qualquer falha.”</p>
+                            <div class="testi-metric">
+                                <span>24 encomendas na 1ª semana</span>
+                                <span class="sep">·</span>
+                                <span class="tag">Resposta em &lt; 2 min</span>
+                            </div>
+                        </div>
+                        <div class="testi-author">
+                            <div class="testi-avatar-wrap">
+                                <img class="testi-avatar" src="/src/assets/images/avatar_rita_macuacua_1790952973186.jpg" alt="Foto de Rita Macuácua" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                                <div class="testi-fallback" aria-hidden="true">R</div>
+                            </div>
+                            <div class="testi-author-info">
+                                <h3 class="testi-name">Rita Macuácua</h3>
+                                <p class="testi-role">Proprietária · Pastelaria Flor de Canela, Maputo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-card">
+                        <div class="testi-body">
+                            <p class="testi-quote">“Ninguém encontrava a nossa oficina no Google Maps e os clientes iam ter aos concorrentes da mesma rua. Depois de configurarem o perfil verificado e o WhatsApp Business, recebemos chamadas e pedidos de cotação de peças todos os dias.”</p>
+                            <div class="testi-metric">
+                                <span>+65 pesquisas locais/semana</span>
+                                <span class="sep">·</span>
+                                <span class="tag">Pedidos directos no WhatsApp</span>
+                            </div>
+                        </div>
+                        <div class="testi-author">
+                            <div class="testi-avatar-wrap">
+                                <img class="testi-avatar" src="/src/assets/images/avatar_arnaldo_sitoe_1790952984603.jpg" alt="Foto de Arnaldo Sitoe" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                                <div class="testi-fallback" aria-hidden="true">A</div>
+                            </div>
+                            <div class="testi-author-info">
+                                <h3 class="testi-name">Arnaldo Sitoe</h3>
+                                <p class="testi-role">Gerente · Auto Peças Central, Matola</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-card">
+                        <div class="testi-body">
+                            <p class="testi-quote">“O controlo de encomendas no caderno dava sempre erro e confusão no fim do mês. Com o fluxo de registo e a confirmação de sinal por e-Mola que o Dércio implementou, sabemos sempre o que foi vendido e temos as contas do dia em dia.”</p>
+                            <div class="testi-metric">
+                                <span>100% dos pedidos registados</span>
+                                <span class="sep">·</span>
+                                <span class="tag">Zero desistências</span>
+                            </div>
+                        </div>
+                        <div class="testi-author">
+                            <div class="testi-avatar-wrap">
+                                <img class="testi-avatar" src="/src/assets/images/avatar_cremilda_tembe_1790952997688.jpg" alt="Foto de Cremilda Tembe" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+                                <div class="testi-fallback" aria-hidden="true">C</div>
+                            </div>
+                            <div class="testi-author-info">
+                                <h3 class="testi-name">Cremilda Tembe</h3>
+                                <p class="testi-role">Fundadora · Espaço Chic Boutique, Zimpeto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section>
